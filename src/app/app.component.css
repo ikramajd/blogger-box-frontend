@@ -1,0 +1,11 @@
+.app-navbar {
+  background: #206a5d;
+}
+
+.navbar-brand {
+  color: #fff;
+}
+
+.navbar-brand:hover {
+  color: #e9f2ff;
+}

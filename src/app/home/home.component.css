@@ -1,0 +1,52 @@
+.page-heading {
+  align-items: center;
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+.section-label {
+  color: #206a5d;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.heading-image {
+  aspect-ratio: 7 / 4;
+  border-radius: 8px;
+  max-width: 320px;
+  object-fit: cover;
+  width: 34%;
+}
+
+.filter-card {
+  border-radius: 8px;
+}
+
+.post-card {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.post-image {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  width: 100%;
+}
+
+.card-title {
+  color: #1f2933;
+}
+
+@media (max-width: 767px) {
+  .page-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .heading-image {
+    max-width: none;
+    width: 100%;
+  }
+}

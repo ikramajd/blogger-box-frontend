@@ -1,59 +1,46 @@
-# BloggerBoxFrontend
+# Blogger Box Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.22.
+Frontend Angular pour les sessions 05 et 06.
 
-## Development server
+## Fonctionnalites
 
-To start a local development server, run:
+- Liste des posts recuperes depuis le backend.
+- Filtre par texte, categorie et date.
+- Detail d'un post.
+- Creation d'un post via `/add-post`.
+- Formulaire reactif avec validations.
+- Chargement des categories depuis `/v1/categories`.
+- Notifications SweetAlert2.
+- Proxy Angular vers le backend Spring Boot.
 
-```bash
-ng serve
-```
+## Lancer
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Le backend doit tourner sur `http://localhost:8080`.
 
 ```bash
-ng generate --help
+npm start
 ```
 
-## Building
+L'application est disponible sur :
 
-To build the project run:
+```text
+http://localhost:4200
+```
+
+Si le port 4200 est deja pris :
 
 ```bash
-ng build
+npm start -- --host 127.0.0.1 --port 4201 --proxy-config proxy.conf.cjs
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Build
 
 ```bash
-ng test
+npm run build
 ```
 
-## Running end-to-end tests
+## Routes
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- `/` : liste des posts.
+- `/add-post` : formulaire de creation.
+- `/posts/:id` : detail d'un post.

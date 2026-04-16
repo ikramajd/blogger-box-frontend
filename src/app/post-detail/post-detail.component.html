@@ -1,0 +1,78 @@
+<div class="container pb-4">
+  <a routerLink="/" class="btn btn-outline-primary mb-4">Back to home</a>
+
+  <div *ngIf="loading" class="alert alert-info">
+    Loading post...
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <article *ngIf="!loading && post && !editMode" class="card border-0 shadow-sm detail-card">
+    <img
+      class="detail-image"
+      [src]="'https://picsum.photos/seed/detail-' + post.id + '/960/360'"
+      [alt]="post.title"
+    />
+    <div class="card-body p-4 p-md-5">
+      <p class="text-muted mb-2">{{ post.createdDate | date:'fullDate' }}</p>
+      <p class="text-primary fw-semibold mb-2" *ngIf="post.category">{{ post.category.name }}</p>
+      <h1 class="mb-3">{{ post.title }}</h1>
+      <p class="lead mb-4">{{ post.content }}</p>
+
+      <div class="d-flex gap-2">
+        <button class="btn btn-primary" (click)="startEdit()">Edit</button>
+        <button class="btn btn-outline-danger" (click)="deletePost()">Delete</button>
+      </div>
+    </div>
+  </article>
+
+  <div *ngIf="!loading && post && editMode" class="card border-0 shadow-sm detail-card">
+    <div class="card-body p-4 p-md-5">
+      <h1 class="mb-4">Edit post</h1>
+
+      <div class="mb-3">
+        <label for="editTitle" class="form-label">Title</label>
+        <input
+          id="editTitle"
+          name="editTitle"
+          class="form-control"
+          [(ngModel)]="formData.title"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="editContent" class="form-label">Content</label>
+        <textarea
+          id="editContent"
+          name="editContent"
+          class="form-control"
+          rows="6"
+          [(ngModel)]="formData.content"
+        ></textarea>
+      </div>
+
+      <div class="mb-4">
+        <label for="editCategoryId" class="form-label">Category</label>
+        <select
+          id="editCategoryId"
+          name="editCategoryId"
+          class="form-select"
+          [(ngModel)]="formData.categoryId"
+        >
+          <option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="d-flex gap-2">
+        <button class="btn btn-primary" (click)="savePost()" [disabled]="saving">
+          {{ saving ? 'Saving...' : 'Save' }}
+        </button>
+        <button class="btn btn-outline-secondary" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

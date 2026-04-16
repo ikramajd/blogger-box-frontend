@@ -1,0 +1,99 @@
+<div class="container pb-4">
+  <div class="form-card card border-0 shadow-sm">
+    <div class="card-body p-4 p-md-5">
+      <div class="form-heading mb-4">
+        <div>
+          <p class="section-label mb-2">Blogger Box</p>
+          <h1 class="mb-2">Write a post</h1>
+          <p class="text-muted mb-0">Share an idea, an experience, or a course note.</p>
+        </div>
+        <img
+          class="form-image"
+          src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=420&q=80"
+          alt="Laptop on a desk"
+        />
+      </div>
+
+      <div *ngIf="loading" class="alert alert-info">
+        Loading categories...
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+
+      <form *ngIf="!loading" [formGroup]="postForm" (ngSubmit)="createPost()" autocomplete="off" novalidate>
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input
+            id="title"
+            class="form-control"
+            [class.is-invalid]="title.invalid && (title.dirty || title.touched)"
+            [class.is-valid]="title.valid && (title.dirty || title.touched)"
+            type="text"
+            formControlName="title"
+            placeholder="Post title"
+          />
+
+          <div class="invalid-feedback" *ngIf="title.errors?.['required']">
+            Title is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="title.errors?.['minlength']">
+            Title must contain at least 5 characters.
+          </div>
+          <div class="invalid-feedback" *ngIf="title.errors?.['maxlength']">
+            Title cannot exceed 150 characters.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="categoryId" class="form-label">Category</label>
+          <select
+            id="categoryId"
+            class="form-select"
+            [class.is-invalid]="categoryId.invalid && (categoryId.dirty || categoryId.touched)"
+            [class.is-valid]="categoryId.valid && (categoryId.dirty || categoryId.touched)"
+            formControlName="categoryId"
+          >
+            <option value="" disabled>Choose a category</option>
+            <option *ngFor="let category of categories" [value]="category.id">
+              {{ category.name }}
+            </option>
+          </select>
+
+          <div class="invalid-feedback" *ngIf="categoryId.errors?.['required']">
+            Category is required.
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="content" class="form-label">Content</label>
+          <textarea
+            id="content"
+            class="form-control"
+            [class.is-invalid]="content.invalid && (content.dirty || content.touched)"
+            [class.is-valid]="content.valid && (content.dirty || content.touched)"
+            rows="8"
+            formControlName="content"
+            placeholder="Your content"
+          ></textarea>
+          <div class="form-text">{{ content.value?.length || 0 }}/2500 characters</div>
+
+          <div class="invalid-feedback" *ngIf="content.errors?.['required']">
+            Content is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="content.errors?.['maxlength']">
+            Content cannot exceed 2500 characters.
+          </div>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-primary" [disabled]="saving">
+            {{ saving ? 'Publishing...' : 'Publish post' }}
+          </button>
+          <a routerLink="/" class="btn btn-outline-secondary">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

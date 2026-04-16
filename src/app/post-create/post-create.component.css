@@ -1,0 +1,41 @@
+.form-card {
+  border-radius: 8px;
+}
+
+.form-heading {
+  align-items: center;
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+.section-label {
+  color: #206a5d;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.form-image {
+  aspect-ratio: 7 / 4;
+  border-radius: 8px;
+  max-width: 280px;
+  object-fit: cover;
+  width: 32%;
+}
+
+textarea {
+  resize: vertical;
+}
+
+@media (max-width: 767px) {
+  .form-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .form-image {
+    max-width: none;
+    width: 100%;
+  }
+}

@@ -65,33 +65,25 @@ The Sign In page is included to demonstrate Angular reactive forms, validation, 
 
 ## Screenshots
 
-Use the strongest screenshots for submission:
+### Home Page
 
-```text
-docs/screenshots/home.png
-docs/screenshots/create-post-valid.png
-docs/screenshots/create-post-validation.png
-docs/screenshots/post-detail.png
-docs/screenshots/swagger.png
-```
-
-Recommended screenshots:
-
-- `home.png` - home page with the post list and filters
-- `create-post-valid.png` - create post form with valid green check icons
-- `create-post-validation.png` - create post form with red validation errors
-- `post-detail.png` - detail page for one post
-- `swagger.png` - backend Swagger UI
-
-Markdown once screenshots are saved:
-
-```md
 ![Home page](docs/screenshots/home.png)
+
+### Create Post
+
 ![Create post with valid form](docs/screenshots/create-post-valid.png)
+
+### Form Validation
+
 ![Create post validation](docs/screenshots/create-post-validation.png)
+
+### Post Detail
+
 ![Post detail](docs/screenshots/post-detail.png)
+
+### Swagger API
+
 ![Swagger API](docs/screenshots/swagger.png)
-```
 
 ## GitHub
 

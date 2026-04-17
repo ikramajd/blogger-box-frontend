@@ -97,7 +97,7 @@ export class PostCreateComponent implements OnInit {
         this.router.navigate(['/']);
       },
       error: (error) => {
-        this.errorMessage = `Error while creating the post. Code: ${error.status || 'unknown'}`;
+        this.errorMessage = this.getErrorMessage(error, 'Error while creating the post.');
         this.toast.fire({
           icon: 'error',
           title: this.errorMessage
@@ -131,5 +131,16 @@ export class PostCreateComponent implements OnInit {
     });
 
     return selectedCategory?.id ?? '';
+  }
+
+  private getErrorMessage(error: unknown, fallback: string): string {
+    if (typeof error === 'object' && error !== null && 'error' in error) {
+      const response = (error as { error?: { message?: string } }).error;
+      if (response?.message) {
+        return response.message;
+      }
+    }
+
+    return fallback;
   }
 }

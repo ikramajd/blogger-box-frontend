@@ -1,11 +1,58 @@
 .app-navbar {
-  background: #206a5d;
+  backdrop-filter: saturate(180%) blur(22px);
+  background: rgba(255, 255, 255, 0.78);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: none;
+  position: sticky;
+  top: 0;
+  z-index: 20;
 }
 
 .navbar-brand {
-  color: #fff;
+  color: #1d1d1f;
+  letter-spacing: 0;
 }
 
 .navbar-brand:hover {
-  color: #e9f2ff;
+  color: #000000;
+}
+
+.nav-link {
+  color: #424245;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 8px 10px;
+}
+
+.nav-link:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000000;
+}
+
+.navbar-text {
+  color: #86868b !important;
+  font-size: 0.92rem;
+}
+
+.btn-light {
+  --bs-btn-bg: #1d1d1f;
+  --bs-btn-border-color: #1d1d1f;
+  --bs-btn-color: #ffffff;
+  --bs-btn-hover-bg: #000000;
+  --bs-btn-hover-border-color: #000000;
+  --bs-btn-hover-color: #ffffff;
+  box-shadow: none;
+}
+
+@media (max-width: 767px) {
+  .app-navbar .container {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .app-navbar .d-flex {
+    flex-wrap: wrap;
+    gap: 8px !important;
+  }
 }

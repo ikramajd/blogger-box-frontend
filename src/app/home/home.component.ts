@@ -98,7 +98,7 @@ export class HomeComponent implements OnInit {
         },
         error: (error) => {
           this.deletingPostId = '';
-          this.errorMessage = `Error while deleting the post. Code: ${error.status || 'unknown'}`;
+          this.errorMessage = this.getErrorMessage(error, 'Error while deleting the post.');
         }
       });
     });
@@ -113,5 +113,16 @@ export class HomeComponent implements OnInit {
         this.errorMessage = 'Error while loading categories.';
       }
     });
+  }
+
+  private getErrorMessage(error: unknown, fallback: string): string {
+    if (typeof error === 'object' && error !== null && 'error' in error) {
+      const response = (error as { error?: { message?: string } }).error;
+      if (response?.message) {
+        return response.message;
+      }
+    }
+
+    return fallback;
   }
 }

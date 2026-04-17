@@ -1,24 +1,35 @@
 .form-card {
   border-radius: 8px;
+  overflow: hidden;
 }
 
 .form-heading {
   align-items: center;
+  background: #fbfbfd;
+  border-radius: 8px;
   display: flex;
   gap: 24px;
   justify-content: space-between;
+  padding: 22px;
 }
 
 .section-label {
-  color: #206a5d;
+  color: #0071e3;
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: 0;
   text-transform: uppercase;
+}
+
+.form-heading h1 {
+  color: #1d1d1f;
+  font-weight: 700;
 }
 
 .form-image {
   aspect-ratio: 7 / 4;
   border-radius: 8px;
+  filter: saturate(0.92) contrast(1.02);
   max-width: 280px;
   object-fit: cover;
   width: 32%;
@@ -26,6 +37,10 @@
 
 textarea {
   resize: vertical;
+}
+
+.form-text {
+  color: #6e6e73;
 }
 
 @media (max-width: 767px) {

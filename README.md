@@ -1,46 +1,102 @@
 # Blogger Box Frontend
 
-Frontend Angular pour les sessions 05 et 06.
+Angular frontend for the Blogger Box application. The app consumes the Spring Boot REST API and provides a clean blog interface to browse, create, edit, delete, and filter posts.
 
-## Fonctionnalites
+## Features
 
-- Liste des posts recuperes depuis le backend.
-- Filtre par texte, categorie et date.
-- Detail d'un post.
-- Creation d'un post via `/add-post`.
-- Formulaire reactif avec validations.
-- Chargement des categories depuis `/v1/categories`.
-- Notifications SweetAlert2.
-- Proxy Angular vers le backend Spring Boot.
+- Apple-inspired responsive UI
+- Home page with post cards
+- Post creation form
+- Post detail page
+- Edit and delete post actions
+- Filters by search text, category, and date
+- Categories loaded from the backend
+- Reactive form validation
+- SweetAlert2 confirmations and toast messages
+- Angular proxy configuration for local backend calls
+- Demo Sign In page showing Angular reactive forms
 
-## Lancer
+## Tech Stack
 
-Le backend doit tourner sur `http://localhost:8080`.
+- Angular
+- TypeScript
+- Bootstrap
+- SweetAlert2
+- RxJS
+
+## Run Locally
+
+Start the backend first:
 
 ```bash
-npm start
+cd /Users/ikram/Desktop/blogger-box-backend
+mvn spring-boot:run -Dspring-boot.run.arguments=--spring.profiles.active=test
 ```
 
-L'application est disponible sur :
+Then start the frontend:
+
+```bash
+cd /Users/ikram/blogger-box-frontend
+npm start -- --host 127.0.0.1 --port 4201 --proxy-config proxy.conf.cjs
+```
+
+Open:
 
 ```text
-http://localhost:4200
-```
-
-Si le port 4200 est deja pris :
-
-```bash
-npm start -- --host 127.0.0.1 --port 4201 --proxy-config proxy.conf.cjs
+http://127.0.0.1:4201
 ```
 
 ## Build
 
 ```bash
-npm run build
+npm run build -- --progress=false
 ```
 
 ## Routes
 
-- `/` : liste des posts.
-- `/add-post` : formulaire de creation.
-- `/posts/:id` : detail d'un post.
+- `/` - post list and filters
+- `/add-post` - create post form
+- `/posts/:id` - post detail and edit page
+- `/sign-in` - demo reactive form page
+
+## About The Sign In Page
+
+The Sign In page is included to demonstrate Angular reactive forms, validation, routing, and SweetAlert notifications. It does not implement real authentication because the backend scope of this project focuses on posts and categories.
+
+## Screenshots
+
+Use the strongest screenshots for submission:
+
+```text
+docs/screenshots/home.png
+docs/screenshots/create-post-valid.png
+docs/screenshots/create-post-validation.png
+docs/screenshots/post-detail.png
+docs/screenshots/swagger.png
+```
+
+Recommended screenshots:
+
+- `home.png` - home page with the post list and filters
+- `create-post-valid.png` - create post form with valid green check icons
+- `create-post-validation.png` - create post form with red validation errors
+- `post-detail.png` - detail page for one post
+- `swagger.png` - backend Swagger UI
+
+Markdown once screenshots are saved:
+
+```md
+![Home page](docs/screenshots/home.png)
+![Create post with valid form](docs/screenshots/create-post-valid.png)
+![Create post validation](docs/screenshots/create-post-validation.png)
+![Post detail](docs/screenshots/post-detail.png)
+![Swagger API](docs/screenshots/swagger.png)
+```
+
+## GitHub
+
+Repository:
+
+```text
+https://github.com/ikramajd/blogger-box-frontend
+```

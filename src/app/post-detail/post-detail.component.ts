@@ -55,8 +55,8 @@ export class PostDetailComponent implements OnInit {
         this.editMode = false;
         this.saving = false;
       },
-      error: () => {
-        this.errorMessage = 'Error while updating the post.';
+      error: (error) => {
+        this.errorMessage = this.getErrorMessage(error, 'Error while updating the post.');
         this.saving = false;
       }
     });
@@ -95,7 +95,7 @@ export class PostDetailComponent implements OnInit {
           this.router.navigate(['/']);
         },
         error: (error) => {
-          this.errorMessage = `Error while deleting the post. Code: ${error.status || 'unknown'}`;
+          this.errorMessage = this.getErrorMessage(error, 'Error while deleting the post.');
         }
       });
     });
@@ -148,5 +148,16 @@ export class PostDetailComponent implements OnInit {
         this.errorMessage = 'Error while loading categories.';
       }
     });
+  }
+
+  private getErrorMessage(error: unknown, fallback: string): string {
+    if (typeof error === 'object' && error !== null && 'error' in error) {
+      const response = (error as { error?: { message?: string } }).error;
+      if (response?.message) {
+        return response.message;
+      }
+    }
+
+    return fallback;
   }
 }

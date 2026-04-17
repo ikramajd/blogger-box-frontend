@@ -1,3 +1,13 @@
 .sign-in-card {
-  border-radius: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sign-in-card .card-body {
+  background: linear-gradient(180deg, #ffffff 0, #fbfbfd 100%);
+}
+
+.sign-in-card h1 {
+  color: #1d1d1f;
+  font-weight: 700;
 }

@@ -1,13 +1,33 @@
 .detail-card {
-  border-radius: 1rem;
-}
-.detail-card {
   border-radius: 8px;
   overflow: hidden;
 }
 
 .detail-image {
   aspect-ratio: 8 / 3;
+  filter: saturate(0.92) contrast(1.02);
   object-fit: cover;
   width: 100%;
+}
+
+.detail-card .card-body {
+  padding-top: 34px !important;
+}
+
+.detail-card h1 {
+  color: #1d1d1f;
+  font-weight: 700;
+  line-height: 1.12;
+}
+
+.detail-card .lead {
+  color: #424245;
+  line-height: 1.75;
+}
+
+.detail-card .text-primary {
+  background: #eaf4ff;
+  border-radius: 8px;
+  display: inline-flex;
+  padding: 5px 10px;
 }

@@ -63,6 +63,12 @@ npm run build -- --progress=false
 
 The Sign In page is included to demonstrate Angular reactive forms, validation, routing, and SweetAlert notifications. It does not implement real authentication because the backend scope of this project focuses on posts and categories.
 
+## Demo Recording
+
+[Watch the project demo recording](docs/demo/blogger-box-demo.mov)
+
+The recording presents the main user flow of the application: browsing posts, using filters, creating a post, seeing form validation, opening a post detail page, and reviewing the backend API documentation.
+
 ## Screenshots
 
 ### Home Page
